@@ -13,19 +13,19 @@
 
   <script>
     function search() {
-      var name = document.getElementById("country").value;  
-      var info = document.getElementById("info");           
+      let name = document.getElementById("country").value;  
+      let info = document.getElementById("info");           
 
 
-      var url = "https://restcountries.com/v3.1/name/" + name + "?fullText=true";
+      let url = "https://restcountries.com/v3.1/name/" + name + "?fullText=true";
 
       
       fetch(url)
         .then((response) => response.json())
         .then((data) => {
           
-          var capital = data[0].capital[0];
-          var flag = data[0].flags.png;
+          let capital = data[0].capital[0];
+          let flag = data[0].flags.png;
 
           
           info.innerHTML = "수도: " + capital;
