@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>나라 정보</title>
+</head>
+<body>
+
+  <h3>나라 이름을 입력하세요</h3>
+  <input id="country" placeholder="예: south korea">
+  <button onclick="search()">검색</button>
+
+  <div id="info"></div>
+
+  <script>
+    function search() {
+      var name = document.getElementById("country").value;  
+      var info = document.getElementById("info");           
+
+
+      var url = "https://restcountries.com/v3.1/name/" + name + "?fullText=true";
+
+      
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          
+          var capital = data[0].capital[0];
+          var flag = data[0].flags.png;
+
+          
+          info.innerHTML = "수도: " + capital;
+          info.innerHTML += "<img src='" + flag + "'>";
+    })
+       
+    }
+  </script>
+
+</body>
+</html>
